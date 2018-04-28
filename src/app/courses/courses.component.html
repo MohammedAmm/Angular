@@ -1,0 +1,34 @@
+    <input [(ngModel)]="Id" placeholder="id"/>
+    <input [(ngModel)]="Name" placeholder="name"/>
+    <input [(ngModel)]="Duration" placeholder="duration"/>
+    <button (click)="save()">Save</button>
+    <input type="input" [(ngModel)]="myFilter">
+    <br>
+    <h4>Pick a highlight color</h4>
+    <div>
+      <input type="radio" name="colors" (click)="color='lightgreen'">Green
+      <input type="radio" name="colors" (click)="color='cyan'">Cyan
+      <input type="radio" name="colors" (click)="color='blue'">Blue      
+    </div>
+    <table class="table table-bordered ">
+      <!-- <li *ngFor="let item in courses">
+        {{item.Id}} : {{item.Name}} : {{item.Duration}}
+      </li> -->
+      <tr>
+        <th>
+          ID
+        </th>
+        <th>
+          Name
+        </th>
+        <th>
+          Duration
+        </th>
+      </tr>
+      <tr *ngFor="let item of (courses | filterarray : myFilter)"  [appHighlight]="color">
+        <td> {{item.id}}</td>
+        <td> {{item.name| testfilter}} </td>
+        <td> {{item.duration}}</td>
+        <td> {{item.date | date:shortDate}}</td>
+      </tr>
+    </table>
